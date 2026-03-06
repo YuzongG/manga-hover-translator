@@ -62,7 +62,33 @@ chrome.action.onClicked.addListener(async (tab) => {
         box.style.border = "1px solid #00e5ff";
         box.style.background = "rgba(0, 229, 255, 0.14)";
         box.style.pointerEvents = "auto";
-        box.title = it.zh || "";
+
+        const tooltip = document.createElement("div");
+        tooltip.textContent = it.zh || "(无翻译)";
+        tooltip.style.position = "absolute";
+        tooltip.style.left = "0";
+        tooltip.style.top = "-32px";
+        tooltip.style.maxWidth = "280px";
+        tooltip.style.padding = "6px 8px";
+        tooltip.style.borderRadius = "6px";
+        tooltip.style.fontSize = "12px";
+        tooltip.style.lineHeight = "1.3";
+        tooltip.style.color = "#fff";
+        tooltip.style.background = "rgba(0,0,0,0.82)";
+        tooltip.style.boxShadow = "0 2px 8px rgba(0,0,0,0.35)";
+        tooltip.style.display = "none";
+        tooltip.style.whiteSpace = "normal";
+        tooltip.style.wordBreak = "break-word";
+        tooltip.style.pointerEvents = "none";
+
+        box.addEventListener("mouseenter", () => {
+          tooltip.style.display = "block";
+        });
+        box.addEventListener("mouseleave", () => {
+          tooltip.style.display = "none";
+        });
+
+        box.appendChild(tooltip);
         overlay.appendChild(box);
       }
 
