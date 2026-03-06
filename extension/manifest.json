@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Manga Hover Translator",
+  "version": "0.1.0",
+  "description": "Detect Japanese text in one manga image and show Chinese translation on hover.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Translate First Large Image"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
